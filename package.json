@@ -11,6 +11,8 @@
   "author": {
     "name": "Simon Hodrus"
   },
+  "license": "MIT",
+  "main": "index.ts",
   "bugs": {
     "url": "https://github.com/skorpsim/decentraland-ecs-spgame/issues"
   },
