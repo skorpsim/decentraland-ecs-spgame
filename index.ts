@@ -34,9 +34,8 @@
 
 import { 
     SPGame,
-    AssetFileType,
-    SPTileAssetsSetup
-} from './core'
+    AssetFileType
+} from './spgame'
 
 export default {
     SPGame,
