@@ -1,5 +1,5 @@
 {
-  "name": "decentraland-ecs-spgame",
+  "name": "@skorpsim/decentraland-ecs-spgame",
   "version": "1.0.0",
   "description": "A library for slide puzzle entities in Decentraland",
   "devDependencies": {
