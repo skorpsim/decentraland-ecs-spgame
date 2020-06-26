@@ -1,7 +1,7 @@
 {
   "name": "decentraland-ecs-spgame",
   "version": "0.0.2",
-  "description": "A library for slide puzzle entities in Decentraland",
+  "description": "A module for slide puzzle entities in Decentraland",
   "devDependencies": {
     "decentraland-ecs": "^6.4.8"
   },
