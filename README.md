@@ -1,6 +1,6 @@
 # Sliding puzzles for Decentraland!
 
-![](https://github.com/skorpsim/https://github.com/skorpsim/decentraland-ecs-spgame/raw/master/images/spgame.png)
+![](https://github.com/skorpsim/decentraland-ecs-spgame/raw/master/images/spgame.png)
 
 ## Overview
 
