@@ -1,7 +1,7 @@
 {
   "name": "decentraland-ecs-spgame",
-  "version": "0.0.2",
-  "description": "A module for slide puzzle entities in Decentraland",
+  "version": "1.0.0",
+  "description": "A module for sliding puzzle entities in Decentraland",
   "devDependencies": {
     "decentraland-ecs": "^6.4.8"
   },
@@ -19,5 +19,6 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/skorpsim/decentraland-ecs-spgame.git"
-  }
+  },
+  "keywords": ["Decentraland", "Sliding puzzle"]
 }

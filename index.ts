@@ -1,7 +1,7 @@
 // Copyright (c) 2020 Simon Hodrus. All rights reserved. Licensed under the MIT license.
 
 /**
- * A library for slide puzzle entities in Decentraland.
+ * A module for sliding puzzle entities in Decentraland.
  *
  * @remarks
  * The `decentraland-ecs-spgame` defines the {@link SPGame} class and related interfaces,

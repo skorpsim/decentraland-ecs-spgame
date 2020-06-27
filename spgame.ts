@@ -138,12 +138,12 @@ export class SPGame implements ISPGameState
     private willStall: () => void;                                                                  // methode invoked when a tile that is not able to move was clicked
 
     /* SPImageSetup specific */
-    private texMaterial: Material | null;                                                           // texture material for SPImageSetup initialization
-    private boxMaterial: Material | null;                                                           // box material for the tile corpus
-    private boxShape: BoxShape = new BoxShape();                                                    // recycle BoxShape for all entities
+    public texMaterial: Material | null;                                                            // texture material for SPImageSetup initialization
+    public boxMaterial: Material | null;                                                            // box material for the tile corpus
+    // private boxShape: BoxShape = new BoxShape();                                                 // recycle BoxShape for all entities
+    // a recycled boxshape can no longer be used =>  .getComponent("engine.shape") will return the object where the recycled BoxShape was first used instead of the derived one
 
     
-
     /* constructores */
     constructor(setup: SPTileAssetsSetup, actions?: SPGameActions);
     constructor(setup: SPImageSetup, actions?: SPGameActions);
@@ -305,11 +305,7 @@ export class SPGame implements ISPGameState
     private voidTileVisibility(enable: boolean): void
     {
         const voidTile = this.tiles[this.tileCnt - 1];                                              // tile that is removed (not visible) to enable movement of the remaining tiles
-        
-        if(enable && !voidTile.alive)                                                               // add to engine in case visibility is requested and entity is not already added
-            engine.addEntity(voidTile);
-        else if(!enable && voidTile.alive)                                                          // remove from engine in case visibility isn't requested and entity is added
-            engine.removeEntity(voidTile);
+        setVisibility(voidTile, enable);
     }
 
     /**
@@ -365,7 +361,7 @@ export class SPGame implements ISPGameState
         if(this.texMaterial)
             tileTop.addComponent(this.texMaterial);                                                 // add texture material to tile top                                
 
-        tileBox.addComponent(this.boxShape);                                                        // reuse boxshape for all tiles
+        tileBox.addComponent(new BoxShape());                                                       // reusing is no longer possible see comment for this.boxShape
         tileBox.addComponent(new OnPointerDown((e) => this.tileChildClick(e, 1)));                  // add the click handler to the child entity
 
         if(this.boxMaterial)
@@ -652,4 +648,19 @@ function getParent(ent: Entity, iteration: number) : IEntity | null | undefined
     for (let n: number = 1; n < iteration; n++)
         curParent = curParent?.getParent();
     return curParent;
+}
+
+/**
+ * set the visibility of an entities shape and all its children
+ */
+function setVisibility(ent: IEntity, enabled: boolean) : void
+{
+    const entShape = ent.getComponentOrNull("engine.shape");
+    
+    if(entShape)
+        (entShape as Shape).visible = enabled;
+
+    const keys = Object.keys(ent.children);
+    for(let k of keys)
+        setVisibility(ent.children[k], enabled);
 }
