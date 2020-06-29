@@ -170,7 +170,7 @@ export class SPGame implements ISPGameState
         this.willStall = actions?.willStall ?? this.dummy;
         
 
-        if((setup.puzzleShape.x + setup.puzzleShape.y) % 1 !== 0)                                   // check setup: are the puzzle shape valures integer?
+        if((setup.puzzleShape.x + setup.puzzleShape.y) % 1 !== 0)                                   // check setup: are the puzzle shape values integer?
             throw new Error("the puzzle shape must contain only integer values");
         
         if(setup.puzzleShape.x < 2 || setup.puzzleShape.y < 2)                                      // check setup: is puzzle shape valid?
